@@ -11,10 +11,10 @@ $(function () {
     $("#navbar").load("https://debatebroshow.github.io/components/navbar.html");
     
     if(isMobile){
-        $("#navbar").show()
+        $("#mobilenavbar").show();   
     }
     else{
-        $("#mobilenavbar").show();   
+        $("#navbar").show()
     }
 
     $("#footer").load("https://debatebroshow.github.io/components/footer.html");
