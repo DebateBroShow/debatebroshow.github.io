@@ -12,7 +12,7 @@ $(function () {
     
     if(isMobile){
         $("#mobilenavbar").show(); 
-        $(body).css("font-size", '1.9375rem')  
+        $('body').css("font-size", '1.9375rem');
     }
     else{
         $("#navbar").show()
