@@ -31,21 +31,21 @@
         <div class="container">
             <div class="row" align="center">
                 <div class="col" class="textCentered">
-                    <iframe width="100%" height="500" scrolling="no" frameborder="no" allow="autoplay"
+                    <iframe id="soundcloud" width="100%" height="500" scrolling="no" frameborder="no" allow="autoplay"
                         src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/885468109&color=%2300bc8c&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/WCVwwX_TWbI" frameborder="0"
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen></iframe>
+                    <iframe id="youtube" width="560" height="315" src="https://www.youtube.com/embed/WCVwwX_TWbI" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                        style="display: none"></iframe>
                     <div class="mb-2"></div>
                     <div class="row mb-2">
                         <div class="col">
-                            <button class="btn btn-primary btn-block">iTunes</button>
+                            <button id="itunesButton" class="btn btn-secondary btn-block">iTunes</button>
                         </div>
                         <div class="col">
-                            <button class="btn btn-secondary btn-block">SoundCloud</button>
+                            <button id="soundcloudButton" class="btn btn-primary btn-block">SoundCloud</button>
                         </div>
                         <div class="col">
-                            <button class="btn btn-primary btn-block">YouTube</button>
+                            <button id="youtubeButton" class="btn btn-secondary btn-block">YouTube</button>
                         </div>
                     </div>
                     <h3>
@@ -80,5 +80,50 @@
 <div class="modal fade" id="navmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
 </div>
+
+<script>
+    $(document).ready(function(){
+        $("#soundcloudButton").click(function () {
+            $('#itunes').hide();
+            $('#youtube').hide();
+            $('#soundcloud').show();
+            switchButtonsOff();
+            $('#soundcloudButton').removeClass('btn-secondary')
+            $('#soundcloudButton').addClass('btn-primary')
+            
+        });
+        $("#itunesButton").click(function () {
+            $('#soundcloud').hide();
+            $('#youtube').hide();
+            $('#itunes').show();
+            switchButtonsOff();
+            $('#itunesButton').removeClass('btn-secondary')
+            $('#itunesButton').addClass('btn-primary')
+        });
+        $("#youtubeButton").click(function () {
+            $('#itunes').hide();
+            $('#soundcloud').hide(); 
+            $('#youtube').show(); 
+            switchButtonsOff();
+            $('#youtubeButton').removeClass('btn-secondary')
+            $('#youtubeButton').addClass('btn-primary')
+        });
+
+        function switchButtonsOff(){
+            $('#youtubeButton').removeClass('btn-primary')
+            $('#itunesButton').removeClass('btn-primary')
+            $('#soundcloudButton').removeClass('btn-primary')
+            if($('#youtubebutton').hasClass('btn-secondary') ==  false){
+                $('#youtubeButton').addClass('btn-secondary')
+            }
+            if($('#itunesButton').hasClass('btn-secondary') ==  false){
+                $('#itunesButton').addClass('btn-secondary')
+            }
+            if($('#soundcloudButton').hasClass('btn-secondary') ==  false){
+                $('#soundcloudButton').addClass('btn-secondary')
+            }
+        }
+    });
+</script>
 
 </html>
