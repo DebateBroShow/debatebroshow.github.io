@@ -18,7 +18,9 @@ $(function () {
         $("#navbar").show()
     }
 
-    window.onresize = console.log(window.width);
+    console.log(window.width)
 
     $("#footer").load("https://debatebroshow.github.io/components/footer.html");
 });
+
+window.onresize = console.log(window.width);
