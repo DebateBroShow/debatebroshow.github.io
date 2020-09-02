@@ -2,7 +2,7 @@
     text-align: center;
 }
 
-.navbar-nav .nav-link:hover {
+.navbar-nav:hover {
     background-color: #303030;
 }
 
