@@ -18,8 +18,8 @@ $(function () {
         $("#navbar").show()
     }
 
-    $(window).resize(function() {
-        $(document).width();
+    $('window').resize(function() {
+        $('document').width();
       });
 
     $("#footer").load("https://debatebroshow.github.io/components/footer.html");
