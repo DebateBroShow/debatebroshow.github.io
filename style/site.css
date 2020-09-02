@@ -18,6 +18,10 @@
     background-color: #303030;
 }
 
+.greenText{
+    color: #00bc8c;
+}
+
 .boxShadow{
     box-shadow: 7px 7px #262626;
 }
