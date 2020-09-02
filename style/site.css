@@ -14,14 +14,18 @@
     background-color: #303030;
 }
 
-.light{
+.light {
     background-color: #303030;
 }
 
-.greenText{
+.greenText {
     color: #00bc8c !important;
 }
 
-.boxShadow{
+.boxShadow {
     box-shadow: 7px 7px #262626;
+}
+
+.underline {
+    text-decoration: underline;
 }
