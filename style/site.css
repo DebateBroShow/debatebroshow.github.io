@@ -2,6 +2,9 @@
     text-align: center;
 }
 
+.navbar-nav .nav-link:hover {
+    background-color: #303030;
+}
 
 .footer {
     position: fixed;
