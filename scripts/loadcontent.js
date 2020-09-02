@@ -11,7 +11,8 @@ $(function () {
     $("#navbar").load("https://debatebroshow.github.io/components/navbar.html");
     
     if(isMobile){
-        $("#mobilenavbar").show();   
+        $("#mobilenavbar").show(); 
+        $(body).css("font-size", '1.9375rem')  
     }
     else{
         $("#navbar").show()
