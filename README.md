@@ -1,1 +1,1 @@
-# debatebroshow.github.io
+# debatebroshow.com

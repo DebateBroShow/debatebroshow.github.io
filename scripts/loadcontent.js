@@ -7,8 +7,8 @@ $(function () {
         isMobile = true;
     }
 
-    $("#navmodal").load("https://debatebroshow.github.io/components/mobileNavbar.html");
-    $("#navbar").load("https://debatebroshow.github.io/components/navbar.html");
+    $("#navmodal").load("https://debatebroshow.com/components/mobileNavbar.html");
+    $("#navbar").load("https://debatebroshow.com/components/navbar.html");
     
     if(isMobile){
         $("#mobilenavbar").show(); 
@@ -18,5 +18,5 @@ $(function () {
         $("#navbar").show()
     }
 
-    $("#footer").load("https://debatebroshow.github.io/components/footer.html");
+    $("#footer").load("https://debatebroshow.com/components/footer.html");
 });
