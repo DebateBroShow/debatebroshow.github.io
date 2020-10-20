@@ -1,0 +1,18 @@
+episode name
+image name
+title 
+subtitle
+Page Title
+buzzsprout url -- from the generate embed portion of the page, easy to google i.e https://www.buzzsprout.com/1415350/5940241-episode-4-black-lives-matter-part2-silence-is-violence-so-we-just-kept-talking.js?container_id=buzzsprout-player-5940241&player=small
+spotify url, just the one from spotify i.e https://open.spotify.com/episode/6gXG2LGPjCPRc4BjSgdwGD
+youtube url, just the one from youtube i.e https://www.youtube.com/watch?v=S0ViDDkcsRw
+---fill the above information below---
+---
+blm2
+BLMpart2.jpg
+Episode #4 BLACK LIVES MATTER(part2): Silence is Violence... So We Just Kept Talking
+In the second part of the three part epic about the Black Lives Matter Movement. In this episode we went deep into the broader systems surrounding the movement, Piper and paul shouted out at each other for a bit and we finished off having a talk about the Capitol Hill Organized Protest.
+Black Lives Matter 2
+https://www.buzzsprout.com/1415350/5940241-episode-4-black-lives-matter-part2-silence-is-violence-so-we-just-kept-talking.js?container_id=buzzsprout-player-5940241&player=small
+https://open.spotify.com/episode/6gXG2LGPjCPRc4BjSgdwGD
+https://www.youtube.com/watch?v=S0ViDDkcsRw
