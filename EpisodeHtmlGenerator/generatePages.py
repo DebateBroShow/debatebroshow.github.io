@@ -1,6 +1,7 @@
 import fileinput
 import os
 import shutil
+import time
 
 def GenerateFiles(epsiodefilename, cardfilename, pagefilename, folderName):
     episodeInfo = parseEpisode(episodefilename)
@@ -14,16 +15,40 @@ def GenerateFiles(epsiodefilename, cardfilename, pagefilename, folderName):
     newPageFilename = episodeInfo[0]+".html"
 
     src_dir = os.getcwd() 
+    #clean up, in case files had been generated previously, to avoid errors
+    cleanAutomation(episodeInfo[0])
+    if path.exists("./GeneratedPages/"+episodeInfo[0]): 
+        shutil.rmtree("./GeneratedPages/"+episodeInfo[0])
+    if path.exists("../pages/episodeList/"+newPageFilename): 
+        shutil.rmtree("../pages/episodeList/"+newPageFilename)
+    time.sleep(5)
+    #start generating pages
     os.makedirs("./GeneratedPages/"+episodeInfo[0])
     shutil.copyfile(cardfilename, newCardFilename)
     shutil.copyfile(pagefilename, newPageFilename)
 
     generateCard(episodeInfo, newCardFilename)
     generatePage(episodeInfo, newPageFilename)
+    #all pages generated, automatically updating the files now
 
+    #copies the generated episode file to the main site
+    shutil.copyfile(newPageFilename, "../pages/episodeList/"+newPageFilename)
+
+    shutil.copyfile("../pages/episodeIndex.html", "episodeIndexHtml.html.bak")
+    #copies the card into episodeIndex.html
+    updateEpisodeIndex()
+
+    #cleanup
     shutil.move(newCardFilename, "./GeneratedPages/"+episodeInfo[0])
     shutil.move(newPageFilename, "./GeneratedPages/"+episodeInfo[0])
-    
+
+def cleanAutomation(filename):
+    print('hello')
+
+def updateEpisodeIndex():  
+    print("hello")
+
+
 def generateCard(info, filename):
     EPISODEFILENAME = info[0]
     IMAGENAME = info[1]
