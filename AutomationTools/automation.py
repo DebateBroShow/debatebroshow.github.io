@@ -52,7 +52,8 @@ def GenerateFiles(epsiodefilename, cardfilename, pagefilename, maincardfilename,
     shutil.move("sitemap.xml", "..")
 
 def cleanAutomation(filename1, filename2):
-    if (os.path.exists("./GeneratedPages/"+filename1) and len("./GeneratedPages/"+filename1) != 0) or os.path.exists("../pages/episodeList/"+filename2):
+    print(os.listdir("./GeneratedPages/"+filename1))
+    if (os.path.exists("./GeneratedPages/"+filename1) and os.listdir("./GeneratedPages/"+filename1)) or os.path.exists("../pages/episodeList/"+filename2):
         if os.path.exists("./GeneratedPages/"+filename1): 
             shutil.rmtree("./GeneratedPages/"+filename1)
         if os.path.exists("../pages/episodeList/"+filename2): 
