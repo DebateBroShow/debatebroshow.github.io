@@ -57,6 +57,7 @@ def cleanAutomation(filename1, filename2):
             shutil.rmtree("./GeneratedPages/"+filename1)
         if os.path.exists("../pages/episodeList/"+filename2): 
             os.remove("../pages/episodeList/"+filename2)
+        #todo: restore the other 2 files from backup perhaps?
     else:
         shutil.copyfile("../pages/episodeIndex.html", "episodeIndex.backup")
         shutil.copyfile("../index.html", "index.backup")
@@ -186,7 +187,6 @@ def parseEpisode(episodefilename):
 if __name__ == "__main__":
     print("Type y to confirm you actually read and understood all the steps in the how to use this text file, anything else with exit safely :)")
     text = raw_input()
-    print(text)
     if(text != "y" and text != "Y"):
         exit()
     print("TODO: fix the cleanup with episodeIndex, it appends episodes more than once")
