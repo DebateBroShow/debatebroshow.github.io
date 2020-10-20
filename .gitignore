@@ -1,2 +1,4 @@
 todo.txt 
 episode.txt
+*.pyc
+__pycache__

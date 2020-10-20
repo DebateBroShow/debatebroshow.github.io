@@ -2,6 +2,7 @@ import fileinput
 import os
 import shutil
 import time
+from sitemap import *
 
 def GenerateFiles(epsiodefilename, cardfilename, pagefilename, maincardfilename, folderName):
     episodeInfo = parseEpisode(episodefilename)
@@ -44,6 +45,11 @@ def GenerateFiles(epsiodefilename, cardfilename, pagefilename, maincardfilename,
     shutil.move(newCardFilename, "./GeneratedPages/"+episodeInfo[0])
     shutil.move(newPageFilename, "./GeneratedPages/"+episodeInfo[0])
     shutil.move(newMainCardFilename, "./GeneratedPages/"+episodeInfo[0])
+
+    mainRoutine()
+    if os.path.exists("../sitemap.xml"): 
+            os.remove("../sitemap.xml")
+    shutil.move("sitemap.xml", "..")
 
 def cleanAutomation(filename1, filename2):
     if os.path.exists("./GeneratedPages/"+filename1) or os.path.exists("../pages/episodeList/"+filename2):
