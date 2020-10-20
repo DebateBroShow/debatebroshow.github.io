@@ -14,20 +14,24 @@ def GenerateFiles(epsiodefilename, cardfilename, pagefilename, maincardfilename,
     src_dir = os.getcwd() 
     #clean up, in case files had been generated previously, to avoid errors
     #creates a backup of the edited files the first time only
+    print("cleaning up previous automation attempts")
     cleanAutomation(episodeInfo[0], newPageFilename)
     #time.sleep(15) #to see if automated deleting is working 
 
     #start generating pages
+    print("creating copies of the files to edit")
     os.makedirs("./GeneratedPages/"+episodeInfo[0])
     shutil.copyfile(cardfilename, newCardFilename)
     shutil.copyfile(pagefilename, newPageFilename)
     shutil.copyfile(maincardfilename, newMainCardFilename)
 
     #generates html code
+    print("generating new html files")
     generateCard(episodeInfo, newCardFilename)
     generateMainCard(episodeInfo, newMainCardFilename)
     generatePage(episodeInfo, newPageFilename)
 
+    print("automatically updating the html of the website")
     #updating and moving files automatically
     #copies the generated episode file to the main site
     shutil.copyfile(newPageFilename, "../pages/episodeList/"+newPageFilename)
@@ -36,6 +40,7 @@ def GenerateFiles(epsiodefilename, cardfilename, pagefilename, maincardfilename,
     updateIndex(newMainCardFilename)
     updateEpisodeIndex(newCardFilename)
 
+    print("cleaing up remaining files")
     #file organization
     shutil.move(newCardFilename, "./GeneratedPages/"+episodeInfo[0])
     shutil.move(newPageFilename, "./GeneratedPages/"+episodeInfo[0])
@@ -180,9 +185,11 @@ def parseEpisode(episodefilename):
 
 if __name__ == "__main__":
     print("Type y to confirm you actually read and understood all the steps in the how to use this text file, anything else with exit safely :)")
-    text = str(input())
-    if(text != "y" or text != "Y"):
+    text = raw_input()
+    print(text)
+    if(text != "y" and text != "Y"):
         exit()
+    print("enjoy")
     episodefilename="episode.txt"
     cardfilename="card.html"
     maincardfilename="mainCard.html"
