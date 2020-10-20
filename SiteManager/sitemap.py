@@ -16,7 +16,7 @@ def mainRoutine():
     for subdir, dirs, files in os.walk(currentDirectory):
         for file in files:
             filepath = subdir + os.sep + file
-            if filepath.endswith(".html") and not '/components/' in filepath and not '/EpisodeHtmlGenerator/' in filepath and not '/templates/' in filepath:
+            if filepath.endswith(".html") and not '/components/' in filepath and not '/SiteManager/' in filepath and not '/templates/' in filepath:
                 f.write('\t<url>\n')
                 print(filepath)
                 websitepath = filepath.replace("/mnt/d/Git/debatebroshow.github.io/", "https://debatebroshow.com\\").replace("\\","/")
