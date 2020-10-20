@@ -1,3 +1,4 @@
+MAKE SURE EVERYTHING IS ON A SINGLE LINE, TEST BEFORE YOU PUSH LIVE LOL
 episode name (html filename)
 image name (in folder)
 title (from artie)
