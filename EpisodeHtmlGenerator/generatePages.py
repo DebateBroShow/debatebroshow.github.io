@@ -96,7 +96,7 @@ def updateEpisodeIndex(filename):
     
     print(k)
     print(newIndex)[k]
-    newIndex = newIndex[:k] + oldEpisode + newIndex[k:]
+    newIndex = newIndex[:k+14] + oldEpisode + newIndex[k+14:]
 
     print(newIndex)[50]
 
