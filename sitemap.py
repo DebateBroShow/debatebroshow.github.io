@@ -15,9 +15,9 @@ currentDirectory = os.getcwd()
 for subdir, dirs, files in os.walk(currentDirectory):
     for file in files:
         filepath = subdir + os.sep + file
-        if filepath.endswith(".html") and not '\\components\\' in filepath and not '\\templates\\' in filepath:
+        if filepath.endswith(".html") and not '\\components\\' in filepath and not '\\EpisodeHtmlGenerator\\' in filepath and not '\\templates\\' in filepath:
             f.write('\t<url>\n')
-            websitepath = filepath.replace("D:\Git\debatebroshow.github.io\\", "https://debatebroshow.com\\")
+            websitepath = filepath.replace("d:\Git\debatebroshow.github.io\\", "https://debatebroshow.com\\")
             f.write('\t\t<loc>' + websitepath +'</loc>\n')
             f.write('\t\t<lastmod>' + str(modificationDate(filepath)) +'</lastmod>\n')
             f.write("\t</url>\n")

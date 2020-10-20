@@ -55,6 +55,7 @@ def cleanAutomation(filename1, filename2):
         shutil.copyfile("../pages/episodeIndex.html", "episodeIndex.backup")
         shutil.copyfile("../index.html", "index.backup")
 
+#updates the homepage automatically, works really great
 def updateIndex(filename):  
     indexFilename = "../index.html"
     i = -1
@@ -74,6 +75,7 @@ def updateIndex(filename):
         for line in newIndex:
             file.write(line)
 
+#updates the index, some indentation gets messed up, but appears to work overall
 def updateEpisodeIndex(filename):  
     indexFilename = "../pages/episodeIndex.html"
     i = -1
@@ -105,6 +107,7 @@ def updateEpisodeIndex(filename):
         for line in newIndex:
             file.write(line) 
 
+#these 3 generate html code
 def generateCard(info, filename):
     EPISODEFILENAME = info[0]
     IMAGENAME = info[1]
