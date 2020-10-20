@@ -7,6 +7,7 @@ def modificationDate(filename):
     return datetime.date.fromtimestamp(t)
 
 def mainRoutine():
+    print("creating sitemap, please be patient")
     f = open("sitemap.xml","w")
 
     f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
@@ -18,7 +19,6 @@ def mainRoutine():
             filepath = subdir + os.sep + file
             if filepath.endswith(".html") and not '/components/' in filepath and not 'AutomationTools' in filepath and not '/templates/' in filepath:
                 f.write('\t<url>\n')
-                print(filepath)
                 websitepath = filepath.replace("/mnt/d/Git/debatebroshow.github.io/", "https://debatebroshow.com\\").replace("\\","/")
                 f.write('\t\t<loc>' + websitepath +'</loc>\n')
                 f.write('\t\t<lastmod>' + str(modificationDate(filepath)) +'</lastmod>\n')

@@ -7,11 +7,6 @@ from sitemap import *
 def GenerateFiles(epsiodefilename, cardfilename, pagefilename, maincardfilename, folderName):
     episodeInfo = parseEpisode(episodefilename)
 
-    i = 0
-    for _ in episodeInfo:
-        print(str(i) + ": " + _)
-        i += 1
-
     newCardFilename = episodeInfo[0]+"_Card.html"
     newMainCardFilename = episodeInfo[0]+"_MainCard.html"
     newPageFilename = episodeInfo[0]+".html"
@@ -101,13 +96,7 @@ def updateEpisodeIndex(filename):
                 j += 1
                 continue
             newIndex.append(line)
-    
-    print(k)
-    print(newIndex)[k]
     newIndex = newIndex[:k+14] + oldEpisode + newIndex[k+14:]
-
-    print(newIndex)[50]
-
     open(indexFilename, 'w').close()
     with open(indexFilename, "w") as file:
         for line in newIndex:
@@ -156,9 +145,7 @@ def generatePage(info, filename):
     PAGETITLE = info[4]
     BUZZSPROUTURL = info[5]
     SPOTIFYURL = info[6][info[6].rindex('/')+1:]
-    print(SPOTIFYURL)
     YOUTUBEURL = info[7][info[7].rindex('=')+1:]
-    print(YOUTUBEURL)
 
     with open(filename, 'r') as file:
         filedata = file.read()
@@ -192,6 +179,10 @@ def parseEpisode(episodefilename):
     return linesParsed[linesParsed.index("---")+1:]
 
 if __name__ == "__main__":
+    print("Type y to confirm you actually read and understood all the steps in the how to use this text file, anything else with exit safely :)")
+    text = str(input())
+    if(text != "y" or text != "Y"):
+        exit()
     episodefilename="episode.txt"
     cardfilename="card.html"
     maincardfilename="mainCard.html"
