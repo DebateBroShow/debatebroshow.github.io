@@ -189,7 +189,7 @@ if __name__ == "__main__":
     print(text)
     if(text != "y" and text != "Y"):
         exit()
-    print("enjoy")
+    print("TODO: fix the cleanup with episodeIndex, it appends episodes more than once")
     episodefilename="episode.txt"
     cardfilename="card.html"
     maincardfilename="mainCard.html"
