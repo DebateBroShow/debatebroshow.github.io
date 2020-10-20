@@ -52,7 +52,7 @@ def GenerateFiles(epsiodefilename, cardfilename, pagefilename, maincardfilename,
     shutil.move("sitemap.xml", "..")
 
 def cleanAutomation(filename1, filename2):
-    print(os.listdir("./GeneratedPages/"+filename1))
+    print(not os.listdir("./GeneratedPages/"+filename1))
     if (os.path.exists("./GeneratedPages/"+filename1) and os.listdir("./GeneratedPages/"+filename1)) or os.path.exists("../pages/episodeList/"+filename2):
         if os.path.exists("./GeneratedPages/"+filename1): 
             shutil.rmtree("./GeneratedPages/"+filename1)
@@ -60,6 +60,8 @@ def cleanAutomation(filename1, filename2):
             os.remove("../pages/episodeList/"+filename2)
         #todo: restore the other 2 files from backup perhaps?
     else:
+        if not os.listdir("./GeneratedPages/"+filename1):
+            shutil.rmtree("./GeneratedPages/"+filename1)
         shutil.copyfile("../pages/episodeIndex.html", "episodeIndex.backup")
         shutil.copyfile("../index.html", "index.backup")
 
