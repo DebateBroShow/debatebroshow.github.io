@@ -19,7 +19,7 @@ def mainRoutine():
             filepath = subdir + os.sep + file
             if filepath.endswith(".html") and not '/components/' in filepath and not 'AutomationTools' in filepath and not '/templates/' in filepath:
                 f.write('\t<url>\n')
-                websitepath = filepath.replace("/mnt/d/Git/debatebroshow.github.io/", "https://debatebroshow.com\\").replace("\\","/")
+                websitepath = filepath.replace("/mnt/d/git/debatebroshow.github.io/", "https://debatebroshow.com\\").replace("/mnt/d/Git/debatebroshow.github.io/", "https://debatebroshow.com\\").replace("\\","/")
                 f.write('\t\t<loc>' + websitepath +'</loc>\n')
                 f.write('\t\t<lastmod>' + str(modificationDate(filepath)) +'</lastmod>\n')
                 f.write("\t</url>\n")
