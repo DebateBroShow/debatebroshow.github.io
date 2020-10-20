@@ -22,6 +22,7 @@
         - if it doesn't look good locally, just discard everything but episode.txt in git
         fix episode.txt, and then run RUNTHISFILE.py one more time
 5.5 Seriously, if you entered something wrong into episode.txt, just start over, the code isn't good enough to handle errors properly
+5.75. also make sure you get rid of the empty folder in /GeneratedPages
 6. check the sitemap and make sure the urls look good, this is enviroment dependent, so we might need to change it for you
 7. commit your branch to git
 8. create a pull request to merge into master branch
