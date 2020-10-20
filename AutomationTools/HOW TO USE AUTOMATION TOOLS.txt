@@ -1,0 +1,26 @@
+1. Create a new git branch named after the episode, branch off of master.
+    If you don't know what this means, dont touch anything
+2. Update episode.txt
+    The instructions are located inside
+3. run RUNTHISFILE.py
+    If you don't know how to run it, install python, if you don't know how to do that, 
+    you probably dont know what git is an ignored step 1, so talk to Owen and he'll give 
+    you a free lesson
+4. observe git, there should be 9 changed files
+    - 2 backups
+    - 4 new generated html files
+        - 3 in the generated html files folder
+        - 1 in /pages/episodefiles folder
+    - 2 updated html files
+        - index and episodeindex 
+    - sitemap.xml 
+        - tells google whats on our site, good for SEO
+5. run the files locally and make sure they look good
+    - since it's automated, the only real errors that can happen are in episode.txt
+        - if it doesn't look good locally, just discard everything but episode.txt in git
+        fix episode.txt, and then run RUNTHISFILE.py one more time
+6. commit your branch to git
+7. create a pull request to merge into master branch
+8. Contact Owen on telegram and discord
+9. Help owen debug after he merges it
+10. you did great
