@@ -1,4 +1,5 @@
 MAKE SURE EVERYTHING IS ON A SINGLE LINE, TEST BEFORE YOU PUSH LIVE LOL
+MAKE SURE TO PUT THE PHOTO IN /pages/episodePhotos, but you will notice if you test
 episode name (html filename)
 image name (in folder)
 title (from artie)
@@ -8,6 +9,7 @@ buzzsprout url -- from the generate embed portion of the page, easy to google i.
 spotify url, just the one from spotify i.e https://open.spotify.com/episode/6gXG2LGPjCPRc4BjSgdwGD
 youtube url, just the one from youtube i.e https://www.youtube.com/watch?v=S0ViDDkcsRw
 ---fill the above information below---
+you can type anything above the below line and it will be ignored
 ---
 blm2
 BLMpart2.jpg

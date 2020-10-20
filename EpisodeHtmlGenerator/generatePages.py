@@ -4,6 +4,7 @@ import shutil
 
 def GenerateFiles(epsiodefilename, cardfilename, pagefilename, folderName):
     episodeInfo = parseEpisode(episodefilename)
+
     i = 0
     for _ in episodeInfo:
         print(str(i) + ": " + _)
@@ -67,7 +68,7 @@ def generatePage(info, filename):
     with open(filename, 'w') as file:
         file.write(filedata)
     
-
+#hope this works lol, not many edge cases handled
 def parseEpisode(episodefilename):
     episode = open(episodefilename, "r+")
     lines = [line for line in episode.readlines()]
