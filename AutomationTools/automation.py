@@ -4,6 +4,7 @@ import shutil
 import time
 from sitemap import *
 
+#can't believe this works
 def GenerateFiles(epsiodefilename, cardfilename, pagefilename, maincardfilename, folderName):
     episodeInfo = parseEpisode(episodefilename)
 
