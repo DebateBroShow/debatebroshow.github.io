@@ -96,7 +96,7 @@ def updateEpisodeIndex(filename):
     indexFilename = "../pages/episodeIndex.html"
     i = -1
     j = 0
-    k = 0
+    k = -1
     newIndex = []
     oldEpisode = []
     card = open(filename, "r").readlines()
@@ -105,15 +105,15 @@ def updateEpisodeIndex(filename):
         for line in file.readlines():
             i += 1
             #print("line: " + str(i) + "\n" + str(line))
-            if "id=\"marker\"" in line:
-                if k == 0:
+            if "id=\"marker\"" in line or (k >= 0 and j < len(card)):
+                if k == -1:
                     k = i
                 newIndex.append(card[j])
                 oldEpisode.append((line))
                 j += 1
             else:
                 newIndex.append(line)
-    newIndex = newIndex[:k] + oldEpisode + newIndex[k]
+    newIndex = newIndex[:k-1] + oldEpisode + newIndex[k-1:]
     open(indexFilename, 'w').close()
     with open(indexFilename, "w") as file:
          for line in newIndex:
