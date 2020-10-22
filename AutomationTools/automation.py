@@ -113,7 +113,7 @@ def updateEpisodeIndex(filename):
                 j += 1
                 continue
             newIndex.append(line)
-    newIndex = newIndex[:k+15] + oldEpisode + newIndex[k+14:]
+    newIndex = newIndex[:k+16] + oldEpisode + newIndex[k+15:]
     open(indexFilename, 'w').close()
     with open(indexFilename, "w") as file:
         for line in newIndex:
