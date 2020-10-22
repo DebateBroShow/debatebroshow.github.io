@@ -18,12 +18,12 @@ def GenerateFiles(epsiodefilename, cardfilename, pagefilename, maincardfilename,
     # clean up, in case files had been generated previously, to avoid errors
     # creates a backup of the edited files the first time only
     logMessage("cleaning up previous automation attempts")
-    cleanAutomation(episodeInfo[0], newPageFilename)
+    cleanAutomation(episodeInfo[0], newPageFilename, folderName)
     # time.sleep(15) #to see if automated deleting is working
 
     # start generating pages
     logMessage("creating copies of the files to edit")
-    os.makedirs("./GeneratedPages/"+episodeInfo[0])
+    os.makedirs(folderName+episodeInfo[0])
     shutil.copyfile(cardfilename, newCardFilename)
     shutil.copyfile(pagefilename, newPageFilename)
     shutil.copyfile(maincardfilename, newMainCardFilename)
@@ -45,9 +45,9 @@ def GenerateFiles(epsiodefilename, cardfilename, pagefilename, maincardfilename,
 
     logMessage("cleaing up remaining files")
     # file organization
-    shutil.move(newCardFilename, "./GeneratedPages/"+episodeInfo[0])
-    shutil.move(newPageFilename, "./GeneratedPages/"+episodeInfo[0])
-    shutil.move(newMainCardFilename, "./GeneratedPages/"+episodeInfo[0])
+    shutil.move(newCardFilename, folderName+episodeInfo[0])
+    shutil.move(newPageFilename, folderName+episodeInfo[0])
+    shutil.move(newMainCardFilename, folderName+episodeInfo[0])
 
     mainRoutine()
     print('completed, check log.txt for more information')
@@ -57,18 +57,18 @@ def GenerateFiles(epsiodefilename, cardfilename, pagefilename, maincardfilename,
     shutil.move("sitemap.xml", "..")
 
 
-def cleanAutomation(filename1, filename2):
-    #logMessage(not os.listdir("./GeneratedPages/"+filename1))
-    if (os.path.exists("./GeneratedPages/"+filename1) or os.path.exists("../pages/episodeList/"+filename2) and os.path.exists("./GeneratedPages/"+filename1)):
-        if os.path.exists("./GeneratedPages/"+filename1):
-            shutil.rmtree("./GeneratedPages/"+filename1)
+def cleanAutomation(filename1, filename2, foldername):
+    #logMessage(not os.listdir(folderName+filename1))
+    if (os.path.exists(folderName+filename1) or os.path.exists("../pages/episodeList/"+filename2) and os.path.exists(folderName+filename1)):
+        if os.path.exists(folderName+filename1):
+            shutil.rmtree(folderName+filename1)
         if os.path.exists("../pages/episodeList/"+filename2):
             os.remove("../pages/episodeList/"+filename2)
         # todo: restore the other 2 files from backup perhaps?
     else:
         logMessage("since this is the first time for this episode, taking a backup")
-        if os.path.exists("./GeneratedPages/"+filename1):
-            shutil.rmtree("./GeneratedPages/"+filename1)
+        if os.path.exists(folderName+filename1):
+            shutil.rmtree(folderName+filename1)
         d = datetime.datetime.now()
         unixtime = str(time.mktime(d.timetuple()))[:-2]
         shutil.copyfile("../pages/episodeIndex.html", "backups/episodeIndex"+unixtime+".backup")
@@ -223,6 +223,6 @@ if __name__ == "__main__":
     cardfilename = "templates/card.html"
     maincardfilename = "templates/mainCard.html"
     pagefilename = "templates/page.html"
-    folderName = "GeneratedPages"
+    folderName = "./GeneratedPages/"
     GenerateFiles(episodefilename, cardfilename,
                   pagefilename, maincardfilename, folderName)
