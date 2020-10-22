@@ -50,7 +50,7 @@ def GenerateFiles(epsiodefilename, cardfilename, pagefilename, maincardfilename,
     shutil.move(newMainCardFilename, "./GeneratedPages/"+episodeInfo[0])
 
     mainRoutine()
-    print('check log.txt for more information')
+    print('completed, check log.txt for more information')
 
     if os.path.exists("../sitemap.xml"):
         os.remove("../sitemap.xml")
