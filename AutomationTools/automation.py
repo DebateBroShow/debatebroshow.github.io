@@ -212,7 +212,7 @@ def parseEpisode(episodefilename):
 
 
 if __name__ == "__main__":
-    print("Type y to confirm you actually read and understood all the steps in the how to use this text file, anything else with exit safely :)")
+    print("enter y if you're sure you want to do this.")
     text = input()  # is this python 2 only?
     if(text != "y" and text != "Y"):
         exit()
