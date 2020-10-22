@@ -50,6 +50,7 @@ def GenerateFiles(epsiodefilename, cardfilename, pagefilename, maincardfilename,
     shutil.move(newMainCardFilename, "./GeneratedPages/"+episodeInfo[0])
 
     mainRoutine()
+    print('check log.txt for more information')
 
     if os.path.exists("../sitemap.xml"):
         os.remove("../sitemap.xml")
@@ -69,9 +70,9 @@ def cleanAutomation(filename1, filename2):
         if os.path.exists("./GeneratedPages/"+filename1):
             shutil.rmtree("./GeneratedPages/"+filename1)
         d = datetime.datetime.now()
-        unixtime = time.mktime(d.timetuple())
-        shutil.copyfile("../pages/episodeIndex.html", "backups/episodeIndex"+str(unixtime)+".backup")
-        shutil.copyfile("../index.html", "backups/index"+str(unixtime)+".backup")
+        unixtime = str(time.mktime(d.timetuple()))[:-2]
+        shutil.copyfile("../pages/episodeIndex.html", "backups/episodeIndex"+unixtime+".backup")
+        shutil.copyfile("../index.html", "backups/index"+unixtime+".backup")
 
 def logMessage(message):
     with open("log.txt", "a") as logFile:
@@ -219,9 +220,9 @@ if __name__ == "__main__":
     if(text != "y" and text != "Y"):
         exit()
     episodefilename = "episode.txt"
-    cardfilename = "card.html"
-    maincardfilename = "mainCard.html"
-    pagefilename = "page.html"
+    cardfilename = "templates/card.html"
+    maincardfilename = "templates/mainCard.html"
+    pagefilename = "templates/page.html"
     folderName = "GeneratedPages"
     GenerateFiles(episodefilename, cardfilename,
                   pagefilename, maincardfilename, folderName)
