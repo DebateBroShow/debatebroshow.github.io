@@ -104,20 +104,27 @@ def updateEpisodeIndex(filename):
         print(len(card))
         for line in file.readlines():
             i += 1
-            if "id=\"marker\"" in line or (j > 0 and j < 13):
+            print("line: " + str(i) + "\n" + str(line))
+            if "id=\"marker\"" in line:
+                print(i)
                 if k == 0:
                     k = i
                 print(j)
                 newIndex.append(card[j])
                 oldEpisode.append((line))
                 j += 1
-                continue
-            newIndex.append(line)
-    newIndex = newIndex[:k+16] + oldEpisode + newIndex[k+15:]
-    open(indexFilename, 'w').close()
-    with open(indexFilename, "w") as file:
-        for line in newIndex:
-            file.write(line)
+            else:
+                newIndex.append(line)
+        print(newIndex[k-1])
+        print(newIndex[k])
+        print(newIndex[k+1])
+        print(newIndex[k+47])
+        print(newIndex[k+48])
+    #newIndex = newIndex[:k+18] + oldEpisode + newIndex[k+18:]
+    # open(indexFilename, 'w').close()
+    # with open(indexFilename, "w") as file:
+    #     for line in newIndex:
+    #         file.write(line)
 
 #reigon Gets the data from the
 def generateCard(info, filename):
