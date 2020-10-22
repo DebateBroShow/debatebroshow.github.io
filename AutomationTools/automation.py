@@ -2,7 +2,6 @@ import fileinput
 import os
 import shutil
 import time
-import datetime
 from sitemap import *
 
 
@@ -69,8 +68,10 @@ def cleanAutomation(filename1, filename2):
         logMessage("since this is the first time for this episode, taking a backup")
         if os.path.exists("./GeneratedPages/"+filename1):
             shutil.rmtree("./GeneratedPages/"+filename1)
-        shutil.copyfile("../pages/episodeIndex.html", "episodeIndex"+str(datetime.now())+".backup")
-        shutil.copyfile("../index.html", "index"+str(datetime.now())+".backup")
+        d = datetime.datetime.now()
+        unixtime = time.mktime(d.timetuple())
+        shutil.copyfile("../pages/episodeIndex.html", "backups/episodeIndex"+str(unixtime)+".backup")
+        shutil.copyfile("../index.html", "backups/index"+str(unixtime)+".backup")
 
 def logMessage(message):
     with open("log.txt", "a") as logFile:
