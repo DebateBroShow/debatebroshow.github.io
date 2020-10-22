@@ -116,8 +116,8 @@ def updateEpisodeIndex(filename):
                 j += 1
             else:
                 newIndex.append(line)
-    print(k)
-    newIndex = newIndex[:k-1] + oldEpisode + newIndex[k-1:]
+    k+= len(card)-1
+    newIndex = newIndex[:k] + oldEpisode + newIndex[k:]
     open(indexFilename, 'w').close()
     with open(indexFilename, "w") as file:
          for line in newIndex:
