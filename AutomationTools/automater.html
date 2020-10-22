@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8' />
+
+    <title>Automated Form</title>
+
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="./js/jquery.confirm.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="p-3 mb-2 bg-dark" align="center">
+            <h2 id="top">Automater</h2>
+        </div>
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <div>
+                        <label for="episodeName">The OFFICIAL NAME OF THE EPISODE </label>
+                        <input type="text" class="form-control" id="episodeName">
+                        <small class="form-text text-muted">This is the one that will be displayed
+                            prominently</small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+
+                            <div>
+                                <label for="episodeSub">Episode Subtitle</label>
+                                <input type="text" class="form-control" id="episodeSub">
+                                <small class="form-text text-muted">The episode subtitle, will be displayed
+                                    promeniently <br>.</small>
+                            </div>
+                            <div>
+                                <label for="htmlName">Name of html file</label>
+                                <input type="text" class="form-control" id="htmlName">
+                                <small class="form-text text-muted">The name of html file that will be created on
+                                    the
+                                    site.</small>
+                            </div>
+                            <div>
+                                <label for="imageName">Image name</label>
+                                <input type="text" class="form-control" id="imageName">
+                                <small class="form-text text-muted">The name of the image file on the server</small>
+                            </div>
+
+                            <div>
+                                <label for="browserTitle">Browser Page Title</label>
+                                <input type="text" class="form-control" id="browserTitle">
+                                <small class="form-text text-muted">Two or 3 words about the episode, in the tab on
+                                    top of the page, this page's title is "Automated Form"</small>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+
+                            <div>
+                                <label for="buzzsprout">Buzzsprout Embed Link</label>
+                                <input type="text" class="form-control" id="buzzsprout">
+                                <small class="form-text text-muted">e.g.
+                                    https://www.buzzsprout.com/1415350/5940241-episode-4-black-lives-matter-part2-silence-is-violence-so-we-just-kept-talking.js?container_id=buzzsprout-player-5940241&player=small</small>
+                            </div>
+
+                            <div>
+                                <label for="Spotfiy">Spotfiy URL</label>
+                                <input type="text" class="form-control" id="Spotfiy">
+                                <small class="form-text text-muted">spotify url, just the one from spotify i.e
+                                    https://open.spotify.com/episode/6gXG2LGPjCPRc4BjSgdwGD</small>
+                            </div>
+
+                            <div>
+                                <label for="youtube">Youtube URL</label>
+                                <input type="text" class="form-control" id="htmlName">
+                                <small class="form-text text-muted">youtube url, just the one from youtube i.e
+                                    https://www.youtube.com/watch?v=S0ViDDkcsRw</small>
+                            </div>
+                            <div>
+                                <label for="citations">Citations</label>
+                                <input type="text" class="form-control" id="htmlName">
+                                <small class="form-text text-muted">To the pastebin or google doc or whatever</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button id="submit" type="submit" class="btn btn-warning btn-block">Submit</button>
+            </form>
+            <button id="test" class="btn btn-outline-secondary btn-block">Fill Form with Example Data</button>
+
+
+
+            <script>
+                $('#submit').confirm({
+                    title: "Delete confirmation",
+                    text: "Make sure to test the website before you upload this, I tested it but by using this you are agreeing that:\n 1. You will double check that everything is right before giving Owen the file\n 2. you can\'t blame owen unless there\'s an actual software failure.",
+                    confirm: function (button) {
+                        data = getData();
+                        download(data,"episode.txt","plain/text")
+                    },
+                    confirmButton: "I understand",
+                    cancelButton: "No"
+                });
+
+                $('#test').click(function () {
+                    populate();
+                });
+
+                function download(data, filename, type) {
+                    var file = new Blob([data], {
+                        type: type
+                    });
+                    if (window.navigator.msSaveOrOpenBlob) // IE10+
+                        window.navigator.msSaveOrOpenBlob(file, filename);
+                    else { // Others
+                        var a = document.createElement("a"),
+                            url = URL.createObjectURL(file);
+                        a.href = url;
+                        a.download = filename;
+                        document.body.appendChild(a);
+                        a.click();
+                        setTimeout(function () {
+                            document.body.removeChild(a);
+                            window.URL.revokeObjectURL(url);
+                        }, 0);
+                    }
+                }
+
+                function getData() {
+                    var values = [];
+                    $('input').each(function () {
+                        values.push($(this).val() + "\n");
+                    });
+                    //["name", "subtitle", "html", "image", "browser", "buzz", "spot", "yt", "citatations"]
+                    //html, image, title, subtitle, pagetitle, buzz, spot, yt, citations
+                    temp = ""
+                    temp = values[0]
+                    values[0] = values[2]
+                    values[2] = temp
+                    temp = values[1]
+                    values[1] = values[3]
+                    values[3] = temp
+                    return "---\n"+values.toString().split('\n\,').join('\n')
+                }
+
+                function populate() {
+                    data = ['Episode #5 Save the USPS So We Don’t All Have to Work for',
+                        'The USPS and the Amazon compete to see who will Deliver the End of The World Faster. Trump’s accusing Mail Ballots of fraudulent and comproving that by promoting vote fraud for republicans while Amazon workers organise for paid time off to vote as part of a larger movement for worker’s rights.',
+                        '1018test',
+                        '1018.png',
+                        'Save the USPS',
+                        'https://www.buzzsprout.com/1415350/5973799-episode-5-save-the-usps-so-we-don-t-all-have-to-work-for-amazon.js?container_id=buzzsprout-player-5973799&player=small',
+                        'https://open.spotify.com/episode/4B4YQnhD4KwXBZF04SrsNL',
+                        'https://www.youtube.com/watch?v=KqEoYwYZu0Y',
+                        'https://pastebin.com/8z3X7FNF'
+                    ]
+
+                    i = 0
+                    $('input').each(function () {
+                        $(this).val(data[i++])
+                    });
+                }
+            </script>
+
+        </div>
+
+        <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+        <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+</body>
+
+</html>
