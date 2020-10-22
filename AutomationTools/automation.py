@@ -4,6 +4,7 @@ import shutil
 import time
 from sitemap import *
 
+
 def GenerateFiles(epsiodefilename, cardfilename, pagefilename, maincardfilename, folderName):
     episodeInfo = parseEpisode(episodefilename)
 
@@ -112,52 +113,55 @@ def updateEpisodeIndex(filename):
                 j += 1
                 continue
             newIndex.append(line)
-    newIndex = newIndex[:k+14] + oldEpisode + newIndex[k+14:]
+    newIndex = newIndex[:k+13] + oldEpisode + newIndex[k+13:]
     open(indexFilename, 'w').close()
     with open(indexFilename, "w") as file:
         for line in newIndex:
             file.write(line)
 
-# these 3 generate html code
-
-
+#reigon Gets the data from the
 def generateCard(info, filename):
-    EPISODEFILENAME = info[0]
-    IMAGENAME = info[1]
-    EPISODETITLE = info[2]
-    EPISODESUBTITLE = info[3]
+    EPISODEFILENAME, IMAGENAME, EPISODETITLE, EPISODESUBTITLE, PAGETITLE, BUZZSPROUTURL, SPOTIFYURL, YOUTUBEURL = GetPageData(
+        info)
 
     with open(filename, 'r') as file:
         filedata = file.read()
 
-    filedata = filedata.replace('EPISODEFILENAME', EPISODEFILENAME)
-    filedata = filedata.replace('IMAGENAME', IMAGENAME)
-    filedata = filedata.replace('EPISODETITLE', EPISODETITLE)
-    filedata = filedata.replace('EPISODESUBTITLE', EPISODESUBTITLE)
+    filedata = getBasicData(filedata, EPISODEFILENAME, IMAGENAME, EPISODETITLE, EPISODESUBTITLE)
 
     with open(filename, 'w') as file:
         file.write(filedata)
 
 
 def generateMainCard(info, filename):
-    EPISODEFILENAME = info[0]
-    IMAGENAME = info[1]
-    EPISODETITLE = info[2]
-    EPISODESUBTITLE = info[3]
+    EPISODEFILENAME, IMAGENAME, EPISODETITLE, EPISODESUBTITLE, PAGETITLE, BUZZSPROUTURL, SPOTIFYURL, YOUTUBEURL = GetPageData(
+        info)
 
     with open(filename, 'r') as file:
         filedata = file.read()
 
-    filedata = filedata.replace('EPISODEFILENAME', EPISODEFILENAME)
-    filedata = filedata.replace('IMAGENAME', IMAGENAME)
-    filedata = filedata.replace('EPISODETITLE', EPISODETITLE)
-    filedata = filedata.replace('EPISODESUBTITLE', EPISODESUBTITLE)
+    filedata = getBasicData(filedata, EPISODEFILENAME, IMAGENAME, EPISODETITLE, EPISODESUBTITLE)
 
     with open(filename, 'w') as file:
         file.write(filedata)
 
 
 def generatePage(info, filename):
+    EPISODEFILENAME, IMAGENAME, EPISODETITLE, EPISODESUBTITLE, PAGETITLE, BUZZSPROUTURL, SPOTIFYURL, YOUTUBEURL = GetPageData(
+        info)
+
+    with open(filename, 'r') as file:
+        filedata = file.read()
+
+    filedata = editData(filedata, EPISODEFILENAME, IMAGENAME, EPISODETITLE,
+                            EPISODESUBTITLE, PAGETITLE, BUZZSPROUTURL, SPOTIFYURL, YOUTUBEURL)
+
+    with open(filename, 'w') as file:
+        file.write(filedata)
+#endreigon
+
+#reigon Parses and Edits the Page Data
+def GetPageData(info):
     EPISODEFILENAME = info[0]
     IMAGENAME = info[1]
     EPISODETITLE = info[2]
@@ -166,31 +170,25 @@ def generatePage(info, filename):
     BUZZSPROUTURL = info[5]
     SPOTIFYURL = info[6][info[6].rindex('/')+1:]
     YOUTUBEURL = info[7][info[7].rindex('=')+1:]
+    return EPISODEFILENAME, IMAGENAME, EPISODETITLE, EPISODESUBTITLE, PAGETITLE, BUZZSPROUTURL, SPOTIFYURL, YOUTUBEURL
 
-    with open(filename, 'r') as file:
-        filedata = file.read()
-
-    filedata = editPageData(filedata, EPISODEFILENAME, IMAGENAME, EPISODETITLE,
-                            EPISODESUBTITLE, PAGETITLE, BUZZSPROUTURL, SPOTIFYURL, YOUTUBEURL)
-
-    with open(filename, 'w') as file:
-        file.write(filedata)
-
-
-def editPageData(filedata, EPISODEFILENAME, IMAGENAME, EPISODETITLE, EPISODESUBTITLE, PAGETITLE, BUZZSPROUTURL, SPOTIFYURL, YOUTUBEURL):
-    filedata = filedata.replace('EPISODEFILENAME', EPISODEFILENAME)
-    filedata = filedata.replace('IMAGENAME', IMAGENAME)
-    filedata = filedata.replace('EPISODETITLE', EPISODETITLE)
-    filedata = filedata.replace('EPISODESUBTITLE', EPISODESUBTITLE)
+def editData(filedata, EPISODEFILENAME, IMAGENAME, EPISODETITLE, EPISODESUBTITLE, PAGETITLE, BUZZSPROUTURL, SPOTIFYURL, YOUTUBEURL):
+    filedata = getBasicData(filedata, EPISODEFILENAME, IMAGENAME, EPISODETITLE, EPISODESUBTITLE)
     filedata = filedata.replace('PAGETITLE', PAGETITLE)
     filedata = filedata.replace('BUZZSPROUTURL', BUZZSPROUTURL)
     filedata = filedata.replace('SPOTIFYURL', SPOTIFYURL)
     filedata = filedata.replace('YOUTUBEURL', YOUTUBEURL)
     return filedata
 
-# hope this works lol, not many edge cases handled, i thinks its only currently windows
+def getBasicData(filedata, EPISODEFILENAME, IMAGENAME, EPISODETITLE, EPISODESUBTITLE):
+    filedata = filedata.replace('EPISODEFILENAME', EPISODEFILENAME)
+    filedata = filedata.replace('IMAGENAME', IMAGENAME)
+    filedata = filedata.replace('EPISODETITLE', EPISODETITLE)
+    filedata = filedata.replace('EPISODESUBTITLE', EPISODESUBTITLE)
+    return filedata
+#endreigon
 
-
+#Hopefully works with linux and windows
 def parseEpisode(episodefilename):
     episode = open(episodefilename, "r+")
     lines = [line for line in episode.readlines()]
