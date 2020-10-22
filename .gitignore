@@ -2,3 +2,5 @@ todo.txt
 *.pyc
 __pycache__
 .vscode/.ropeproject/
+
+AutomationTools/log.txt
