@@ -215,7 +215,7 @@ def parseEpisode(episodefilename):
 
 
 if __name__ == "__main__":
-    print("enter y if you're sure you want to do this.")
+    print("enter y if you're sure you want to do this, don't do it until the image is in place!")
     text = input()  # is this python 2 only?
     if(text != "y" and text != "Y"):
         exit()
