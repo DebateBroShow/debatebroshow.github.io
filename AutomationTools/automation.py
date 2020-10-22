@@ -124,7 +124,7 @@ def updateEpisodeIndex(filename):
 
 #reigon Gets the data from the
 def generateCard(info, filename):
-    EPISODEFILENAME, IMAGENAME, EPISODETITLE, EPISODESUBTITLE, PAGETITLE, BUZZSPROUTURL, SPOTIFYURL, YOUTUBEURL = GetPageData(
+    EPISODEFILENAME, IMAGENAME, EPISODETITLE, EPISODESUBTITLE, PAGETITLE, BUZZSPROUTURL, SPOTIFYURL, YOUTUBEURL, CITATIONS = GetPageData(
         info)
 
     with open(filename, 'r') as file:
@@ -137,7 +137,7 @@ def generateCard(info, filename):
 
 
 def generateMainCard(info, filename):
-    EPISODEFILENAME, IMAGENAME, EPISODETITLE, EPISODESUBTITLE, PAGETITLE, BUZZSPROUTURL, SPOTIFYURL, YOUTUBEURL = GetPageData(
+    EPISODEFILENAME, IMAGENAME, EPISODETITLE, EPISODESUBTITLE, PAGETITLE, BUZZSPROUTURL, SPOTIFYURL, YOUTUBEURL, CITATIONS = GetPageData(
         info)
 
     with open(filename, 'r') as file:
