@@ -6,7 +6,6 @@ from sitemap import *
 
 
 def GenerateFiles(epsiodefilename, cardfilename, pagefilename, maincardfilename, folderName):
-    logMessage("TODO: fix the cleanup with episodeIndex, it appends episodes more than once")
 
     episodeInfo = parseEpisode(episodefilename)
 
@@ -49,12 +48,16 @@ def GenerateFiles(epsiodefilename, cardfilename, pagefilename, maincardfilename,
     shutil.move(newPageFilename, folderName+episodeInfo[0])
     shutil.move(newMainCardFilename, folderName+episodeInfo[0])
 
-    mainRoutine()
+    print("enter y if you're running this in a linux environment and have the same path setup as Owen")
+    text = input() 
+    if(text == "y" or text == "Y"):
+        mainRoutine()
+        if os.path.exists("../sitemap.xml"):
+            os.remove("../sitemap.xml")
+        shutil.move("sitemap.xml", "..")
+    
     print('completed, check log.txt for more information')
-
-    if os.path.exists("../sitemap.xml"):
-        os.remove("../sitemap.xml")
-    shutil.move("sitemap.xml", "..")
+    time.sleep(2)
 
 
 def cleanAutomation(filename1, filename2, foldername):
@@ -215,6 +218,7 @@ def parseEpisode(episodefilename):
 
 
 if __name__ == "__main__":
+    print('please note that the sitemap is currently only working on linux environments, please contact Owen to generate it')
     print("enter y if you're sure you want to do this, don't do it until the image is in place!")
     text = input() 
     if(text != "y" and text != "Y"):
