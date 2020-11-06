@@ -218,8 +218,9 @@ def parseEpisode(episodefilename):
 
 
 if __name__ == "__main__":
-    print('please note that the sitemap is currently only working on linux environments, please contact Owen to generate it')
-    print("enter y if you're sure you want to do this, don't do it until the image is in place!")
+    #print('please note that the sitemap is currently only working on linux environments, please contact Owen to generate it')
+    print("enter y if you're sure you want to do this, don't do it until the thumbnail image is in place!")
+    print("please make sure you have read ../help/help.pdf and have followed the steps exactly")
     text = input() 
     if(text != "y" and text != "Y"):
         exit()
