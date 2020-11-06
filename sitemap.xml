@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
 		<loc>https://debatebroshow.com/index.html</loc>
-		<lastmod>2020-10-22</lastmod>
+		<lastmod>2020-11-06</lastmod>
 	</url>
 	<url>
 		<loc>https://debatebroshow.com/members/Artie/artie.html</loc>
@@ -30,7 +30,7 @@
 	</url>
 	<url>
 		<loc>https://debatebroshow.com/pages/episodeIndex.html</loc>
-		<lastmod>2020-10-22</lastmod>
+		<lastmod>2020-11-06</lastmod>
 	</url>
 	<url>
 		<loc>https://debatebroshow.com/pages/episodeList/1018.html</loc>
@@ -38,7 +38,7 @@
 	</url>
 	<url>
 		<loc>https://debatebroshow.com/pages/episodeList/1020.html</loc>
-		<lastmod>2020-10-22</lastmod>
+		<lastmod>2020-11-04</lastmod>
 	</url>
 	<url>
 		<loc>https://debatebroshow.com/pages/episodeList/104.html</loc>
@@ -55,5 +55,17 @@
 	<url>
 		<loc>https://debatebroshow.com/pages/episodeList/BOB.html</loc>
 		<lastmod>2020-10-19</lastmod>
+	</url>
+	<url>
+		<loc>https://debatebroshow.com/pages/episodeList/episode7.html</loc>
+		<lastmod>2020-11-06</lastmod>
+	</url>
+	<url>
+		<loc>https://debatebroshow.com/pages/episodeList/episode8.html</loc>
+		<lastmod>2020-11-06</lastmod>
+	</url>
+	<url>
+		<loc>https://debatebroshow.com/pages/episodeList/episode9.html</loc>
+		<lastmod>2020-11-06</lastmod>
 	</url>
 </urlset>
